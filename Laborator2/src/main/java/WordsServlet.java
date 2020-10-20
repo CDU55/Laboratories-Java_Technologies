@@ -34,7 +34,7 @@ public class WordsServlet extends HttpServlet {
         }
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher("/result.jsp");
-        PrintWriter out=response.getWriter();
+        dispatcher.forward(request,response);
 
     }
     @Override

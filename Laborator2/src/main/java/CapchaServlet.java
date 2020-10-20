@@ -42,8 +42,13 @@ public class CapchaServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int requestResult=Integer.parseInt(request.getParameter("result"));
         RequestDispatcher dispatcher;
+        if(request.getParameter("result")==null || request.getParameter("result").equals(""))
+        {
+            dispatcher = getServletContext().getRequestDispatcher("/error.jsp");
+            request.setAttribute("errorMessage","Invalid capcha result");
+        }
+        int requestResult=Integer.parseInt(request.getParameter("result"));
         if(requestResult==result) {
             dispatcher = getServletContext().getRequestDispatcher("/words");
         }
