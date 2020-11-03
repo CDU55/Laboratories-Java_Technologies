@@ -19,22 +19,18 @@ public class WordsServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException  {
-
-        List<WordModel> words=new ArrayList<WordModel>();
-        words.add(new WordModel("Java","English","Programming language"));
-        words.add(new WordModel("Tehnologii Java","Romanian","Materie facultat"));
+        String forwardURL="/result.jsp";
         try {
-            request.setAttribute("wordsList",WordsService.getWords());
+            request.setAttribute("wordsList",WordsService.getWordsList());
         }
          catch (ClassNotFoundException|SQLException e) {
-             RequestDispatcher dispatcher =
-                     getServletContext().getRequestDispatcher("/error.jsp");
+            forwardURL="/error.jsp";
              request.setAttribute("errorMessage",e.getMessage());
-             dispatcher.forward(request,response);
         }
         RequestDispatcher dispatcher =
-                getServletContext().getRequestDispatcher("/result.jsp");
+                getServletContext().getRequestDispatcher(forwardURL);
         dispatcher.forward(request,response);
+        return;
 
     }
     @Override
@@ -50,19 +46,37 @@ public class WordsServlet extends HttpServlet {
         response.addCookie(wordCookie);
         response.addCookie(languageCookie);
         boolean okInsert=false;
+        RequestDispatcher dispatcher;
+        if(request.getParameter("result")==null || request.getParameter("result").equals(""))
+        {
+            dispatcher = getServletContext().getRequestDispatcher("/error.jsp");
+            request.setAttribute("errorMessage","Please enter captcha result");
+            dispatcher.forward(request,response);
+            return;
+        }
+        int requestResult=Integer.parseInt(request.getParameter("result"));
+        if(requestResult!=CapchaServlet.result)
+        {
+            dispatcher = getServletContext().getRequestDispatcher("/error.jsp");
+            request.setAttribute("errorMessage","Invalid captcha result");
+            dispatcher.forward(request,response);
+            return;
+        }
         try {
             WordsService.addWord(word,language,definition);
             okInsert=true;
         } catch (ClassNotFoundException|SQLException e) {
 
-            RequestDispatcher dispatcher =
+             dispatcher =
                     getServletContext().getRequestDispatcher("/error.jsp");
             request.setAttribute("errorMessage",e.getMessage());
             dispatcher.forward(request,response);
+            return;
         }
         if(okInsert)
         {
             doGet(request,response);
+            return;
         }
     }
 }

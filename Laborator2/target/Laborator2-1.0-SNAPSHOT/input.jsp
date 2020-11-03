@@ -6,6 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:useBean id="language_used" class="java.lang.String" scope="session"/>
+<fmt:setLocale value="${sessionScope.language_used}" />
+<fmt:setBundle basename="translate"/>
 <html>
 <head>
     <title>Input</title>
@@ -30,13 +35,13 @@
 %>
 <div class="container">
     <div class="row col-md-8 ">
-        <form class="form" action="capcha" method="post">
+        <form class="form" action="words" method="post">
             <div class="form-group">
-                <label for="wordText">Word :</label>
+                <label for="wordText"><fmt:message key="Word_lan"/></label>
                 <input type="text" class="form-control" id="wordText" PLACEHOLDER="Word" name="word" value=<%=wordCookie%>>
             </div>
             <div class="form-group">
-                <label for="language">Language :</label>
+                <label for="language"><fmt:message key="Language_lan"/></label>
                 <select class="form-control" id="language" name="language" >
                     <% for (String language : Languages.getLanguages())
                     {
@@ -53,14 +58,14 @@
             </div>
             <div class="form-group">
                 <img src="${pageContext.request.contextPath}/capcha"></br>
-                <label for="result">Result :</label>
+                <label for="result"><fmt:message key="Result_lan"/></label>
                 <input type="text" class="form-control" id="result" PLACEHOLDER="0" name="result">
             </div>
             <div class="form-group">
-                <label for="definition">Definition :</label>
+                <label for="definition"><fmt:message key="Definition_lan"/></label>
                 <textarea class="form-control" id="definition" rows="3" placeholder="Word definition goes here" name="definition"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary"><fmt:message key="Submit_lan"/></button>
         </form>
     </div>
 </div>

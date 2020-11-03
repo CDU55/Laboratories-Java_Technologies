@@ -1,12 +1,6 @@
 <%@ page import="utils.WordModel" %>
 <%@ page import="java.util.List" %>
-<%@ page import="utils.WordsService" %><%--
-  Created by IntelliJ IDEA.
-  User: Claudiu
-  Date: 10/18/2020
-  Time: 3:00 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,6 +10,7 @@
 </head>
 <body>
 <div class="container">
+    <h1></h1>
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <table class="table">
@@ -25,10 +20,12 @@
                     <th>Word</th>
                     <th>Language</th>
                     <th>Definition</th>
+                    <th>Added</th>
                 </tr>
                 </thead>
                 <tbody>
-                <% int i=1;
+                <% if(request.getAttribute("wordsList")!=null)
+                {    int i=1;
                 List<WordModel> words= (List<WordModel>) request.getAttribute("wordsList");%>
                 <% for(WordModel word:words)
                 {
@@ -37,8 +34,14 @@
                     out.println("<td>"+ word.word+"</td>");
                     out.println("<td>"+ word.language +"</td>");
                     out.println("<td>"+ word.definition +"</td>");
+                    out.println("<td>"+ word.date.toString()+"</td>");
                     out.println("</tr>");
 
+                }
+                }
+                else
+                {
+                    out.println("<h1 class=\"Warning\">No content</h1>");
                 }%>
                 </tbody>
 

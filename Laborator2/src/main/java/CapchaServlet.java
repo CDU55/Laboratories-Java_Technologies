@@ -14,7 +14,7 @@ import java.util.Random;
 
 @WebServlet(name = "Capcha", urlPatterns = {"/capcha"})
 public class CapchaServlet extends HttpServlet {
-    private static int result;
+    public static int result;
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -3,4 +3,43 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <context-param>
+        <param-name>language</param-name>
+        <param-value>Romanian</param-value>
+    </context-param>
+    <filter>
+        <filter-name>ResponseFilter</filter-name>
+        <filter-class>filters.ResponseModifierFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ResponseFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>LoggingFilter</filter-name>
+        <filter-class>filters.LogFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoggingFilter</filter-name>
+        <url-pattern>/input.jsp</url-pattern>
+        <url-pattern>/result.jsp</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter>
+        <filter-name>SubmitFilter</filter-name>
+        <filter-class>filters.InputFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>SubmitFilter</filter-name>
+        <url-pattern>/words</url-pattern>
+    </filter-mapping>
+    <jsp-config>
+        <taglib>
+            <taglib-uri>tags.Definition</taglib-uri>
+            <taglib-location>/WEB-INF/custom.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
 </web-app>
