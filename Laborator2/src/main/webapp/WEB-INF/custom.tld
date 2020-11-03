@@ -6,8 +6,7 @@
     <tag>
         <name>Definition</name>
         <tag-class>tags.Definition</tag-class>
-        <body-content>scriptless</body-content>
-
+        <body-content>empty</body-content>
         <attribute>
             <name>word</name>
         </attribute>

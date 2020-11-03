@@ -3,10 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <context-param>
-        <param-name>language</param-name>
-        <param-value>Romanian</param-value>
-    </context-param>
+
     <filter>
         <filter-name>ResponseFilter</filter-name>
         <filter-class>filters.ResponseModifierFilter</filter-class>
@@ -26,11 +23,14 @@
         <dispatcher>FORWARD</dispatcher>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
+    <context-param>
+        <param-name>language</param-name>
+        <param-value>Romanian</param-value>
+    </context-param>
     <filter>
         <filter-name>SubmitFilter</filter-name>
         <filter-class>filters.InputFilter</filter-class>
     </filter>
-
     <filter-mapping>
         <filter-name>SubmitFilter</filter-name>
         <url-pattern>/words</url-pattern>

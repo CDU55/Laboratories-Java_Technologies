@@ -20,7 +20,6 @@
                     <th>Word</th>
                     <th>Language</th>
                     <th>Definition</th>
-                    <th>Added</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -34,7 +33,6 @@
                     out.println("<td>"+ word.word+"</td>");
                     out.println("<td>"+ word.language +"</td>");
                     out.println("<td>"+ word.definition +"</td>");
-                    out.println("<td>"+ word.date.toString()+"</td>");
                     out.println("</tr>");
 
                 }

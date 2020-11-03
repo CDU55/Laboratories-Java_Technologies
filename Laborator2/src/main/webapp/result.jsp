@@ -20,7 +20,6 @@
                     <th>Word</th>
                     <th>Language</th>
                     <th>Definition</th>
-                    <th>Added</th>
                 </tr>
                 </thead>
                 <tbody>
