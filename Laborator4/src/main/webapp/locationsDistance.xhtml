@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+</h:head>
+<h:body>
+    <h:form>
+        <p:growl id="growl" showDetail="true" sticky="true" />
+        <p:panel header="Edit Locations Distance">
+            <h:panelGrid columns="4" cellpadding="5">
+
+
+                <p:outputLabel for="@next" value="Location 1 :" />
+                <p:spinner id="l1" value="#{locationsDistance.location1}" />
+
+                <p:outputLabel for="@next" value="Location 2 :" />
+                <p:spinner id="l2" value="#{locationsDistance.location2}" />
+
+                <p:outputLabel for="@next" value="Distance:" />
+                <p:spinner id="dist" value="#{locationsDistance.distance}" />
+            </h:panelGrid>
+
+            <p:commandButton value="Save" ajax="false" icon="pi pi-check" validateClient="true" action="#{locationsDistance.add}"/>
+            <p:commandButton value="Edit" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{locationsDistance.update}"/>
+            <p:commandButton value="Delete" ajax="false" icon="pi pi-times" validateClient="true" action="#{locationsDistance.delete}"/>
+            <p:linkButton outcome="home" value="Home" icon="pi pi-home" style="margin-right:20px;"/>
+        </p:panel>
+    </h:form>
+    <p:dataTable var="locationElement" value="#{data.locations}">
+        <f:facet name="header">
+            List of Locations
+        </f:facet>
+        <p:column>
+            <f:facet name="header">
+                Id
+            </f:facet>
+            #{locationElement.id}
+        </p:column>
+        <p:column headerText="Location Name">
+            #{locationElement.name}
+        </p:column>
+    </p:dataTable>
+</h:body>
+</html>

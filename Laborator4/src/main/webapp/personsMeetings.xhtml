@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+</h:head>
+<h:body>
+    <h:form>
+        <p:growl id="growl" showDetail="true" sticky="true" />
+        <p:panel header="Edit Person Meetings Repository">
+            <h:panelGrid columns="4" cellpadding="5">
+
+
+                <p:outputLabel for="@next" value="Person Id:" />
+                <p:spinner id="l1" value="#{personMeeting.personId}" />
+
+                <p:outputLabel for="@next" value="Meeting Id:" />
+                <p:spinner id="l2" value="#{personMeeting.meetingId}" />
+
+            </h:panelGrid>
+
+            <p:commandButton value="Save" ajax="false" icon="pi pi-check" validateClient="true" action="#{personMeeting.add}"/>
+            <p:commandButton value="Delete" ajax="false" icon="pi pi-times" validateClient="true" action="#{personMeeting.delete}"/>
+            <p:linkButton outcome="home" value="Home" icon="pi pi-home" style="margin-right:20px;"/>
+        </p:panel>
+    </h:form>
+    <p:dataTable var="personElement" value="#{data.persons}">
+        <f:facet name="header">
+            List of Persons
+        </f:facet>
+        <p:column>
+            <f:facet name="header">
+                Id
+            </f:facet>
+            #{personElement.id}
+        </p:column>
+        <p:column headerText="Person Id">
+            #{personElement.personId}
+        </p:column>
+        <p:column headerText="Person Name">
+            #{personElement.name}
+        </p:column>
+    </p:dataTable>
+    <p:dataTable var="meetingElement" value="#{data.meetings}">
+        <f:facet name="header">
+            List of Meetings
+        </f:facet>
+        <p:column>
+            <f:facet name="header">
+                Id
+            </f:facet>
+            #{meetingElement.id}
+        </p:column>
+        <p:column headerText="Meeting Id">
+            #{meetingElement.meetingId}
+        </p:column>
+        <p:column headerText="Topic">
+            #{meetingElement.topic}
+        </p:column>
+        <p:column headerText="Start Time">
+            #{meetingElement.startTime}
+        </p:column>
+        <p:column headerText="Duration(Mins)">
+            #{meetingElement.duration}
+        </p:column>
+        <p:column headerText="Location ">
+            #{meetingElement.locationId}
+        </p:column>
+    </p:dataTable>
+</h:body>
+</html>

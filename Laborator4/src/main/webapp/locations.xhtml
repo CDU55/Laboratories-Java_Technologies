@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+    <h:form>
+        <p:growl id="growl" showDetail="true" sticky="true"/>
+        <p:panel header="Edit Locations Repository">
+            <h:panelGrid columns="4" cellpadding="5">
+                <p:outputLabel for="@next" value="Name" />
+                <p:inputText value="#{location.name}" label="Name"/>
+            </h:panelGrid>
+
+            <p:commandButton value="Save" ajax="false" icon="pi pi-check" validateClient="true" action="#{location.add}"/>
+            <p:commandButton value="Delete" ajax="false" icon="pi pi-times" validateClient="true" action="#{location.delete}"/>
+            <p:linkButton outcome="home" value="Home" icon="pi pi-home" style="margin-right:20px;"/>
+        </p:panel>
+    </h:form></h:body>
+</html>

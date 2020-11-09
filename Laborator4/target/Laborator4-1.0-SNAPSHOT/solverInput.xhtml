@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+</h:head>
+<h:body>
+    <h:form>
+        <p:growl id="growl" showDetail="true" sticky="true" />
+        <p:panel header="Provide the number of Timeslots">
+            <h:panelGrid columns="4" cellpadding="5">
+
+
+                <p:outputLabel for="@next" value="Number of Timeslots :" />
+                <p:spinner id="l1" value="#{fetcher.timeslots}" />
+
+            </h:panelGrid>
+            <p:commandButton value="Solve" ajax="false" icon="pi pi-check" validateClient="true" action="#{fetcher.toDisplayResult}"/>
+            <p:linkButton outcome="home" value="Home" icon="pi pi-home" style="margin-right:20px;"/>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>

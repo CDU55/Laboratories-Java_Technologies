@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+</h:head>
+<h:body>
+    <p:dataTable var="resultElement" value="#{fetcher.results}">
+        <f:facet name="header">
+            Meeting Allocation
+        </f:facet>
+        <p:column>
+            <f:facet name="header">
+                Meeting Index
+            </f:facet>
+            #{resultElement.meetingIndex}
+        </p:column>
+        <p:column headerText="Timeslot">
+            #{resultElement.timeslot}
+        </p:column>
+    </p:dataTable>
+    <p:linkButton outcome="home" value="Home" icon="pi pi-home" style="margin-right:20px;"/>
+</h:body>
+</html>
