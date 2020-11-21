@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui = "http://java.sun.com/jsf/facelets">
+<h:body>
+    <ui:composition template ="dataView.xhtml">
+        <ui:param name="elements" value="#{data.meetings}"/>
+        <ui:define name="columns">
+            <f:view locale="#{languageSetter.locale}">
+            <f:facet name="header">
+                #{main['meetingList']}
+            </f:facet>
+            <p:column>
+                <f:facet name="header">
+                    Id
+                </f:facet>
+                #{element.id}
+            </p:column>
+            <p:column headerText="#{main['meetingid']}">
+                #{element.meetingId}
+            </p:column>
+            <p:column headerText="#{main['topic']}">
+                #{element.topic}
+            </p:column>
+            <p:column headerText="#{main['startTime']}">
+                #{element.startTime}
+            </p:column>
+            <p:column headerText="#{main['duration']}">
+                #{element.duration}
+            </p:column>
+            <p:column headerText="#{main['locationId']}">
+                #{element.locationId}
+            </p:column>
+            </f:view>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

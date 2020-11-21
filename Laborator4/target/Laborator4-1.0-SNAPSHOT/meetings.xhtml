@@ -3,16 +3,24 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui = "http://java.sun.com/jsf/facelets">
 <h:head>
 </h:head>
 <h:body>
+    <ui:composition template = "templates/page.xhtml">
+    <ui:param name="pageTitle" value="Meetings"/>
+
+    <ui:define name="content">
     <h:form>
         <p:growl id="growl" showDetail="true" sticky="true" />
         <p:panel header="Edit Meetings Repository">
             <h:panelGrid columns="4" cellpadding="5">
                 <p:outputLabel for="@next" value="Id :" />
-                <p:inputText value="#{meeting.meetingId}" label="Id"/>
+                <p:inputText value="#{meeting.meetingId}" label="Id">
+                    <f:validator validatorId="validators.MeetingValidator"/>
+                </p:inputText>
 
                 <p:outputLabel for="@next" value="Topic :" />
                 <p:inputText value="#{meeting.topic}" label="Topic"/>
@@ -27,26 +35,27 @@
                 <p:spinner value="#{meeting.locationId}" label="Location"/>
             </h:panelGrid>
 
-            <p:commandButton value="Save" ajax="false" icon="pi pi-check" validateClient="true" action="#{meeting.add}"/>
-            <p:commandButton value="Edit" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{meeting.update}"/>
-            <p:commandButton value="Delete" ajax="false" icon="pi pi-times" validateClient="true" action="#{meeting.delete}"/>
 
-            <p:linkButton outcome="home" value="Home" icon="pi pi-home" style="margin-right:20px;"/>
+            <p:commandButton value="#{main['add']}" ajax="false" icon="pi pi-check" validateClient="true" action="#{meeting.add}"/>
+            <p:commandButton value="#{main['edit']}" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{meeting.update}"/>
+            <p:commandButton value="#{main['delete']}" ajax="false" icon="pi pi-times" validateClient="true" action="#{meeting.delete}"/>
+
         </p:panel>
     </h:form>
-    <p:dataTable var="locationElement" value="#{data.locations}">
-        <f:facet name="header">
-            List of Locations
-        </f:facet>
-        <p:column>
-            <f:facet name="header">
-                Id
-            </f:facet>
-            #{locationElement.id}
-        </p:column>
-        <p:column headerText="Location Name">
-            #{locationElement.name}
-        </p:column>
-    </p:dataTable>
+        <p:dataTable var="locationElement" value="#{data.locations}">
+            <f:view locale="#{languageSetter.locale}">
+                <f:facet name="header">
+                    #{main['locationList']}
+                </f:facet>
+                <p:column headerText="#{main['locationId']}">
+                    #{element.id}
+                </p:column>
+                <p:column headerText="#{main['locationName']}">
+                    #{element.name}
+                </p:column>
+            </f:view>
+        </p:dataTable>
+    </ui:define>
+    </ui:composition>
 </h:body>
 </html>

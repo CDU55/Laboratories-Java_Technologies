@@ -3,10 +3,14 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui = "http://java.sun.com/jsf/facelets">
 <h:head>
 </h:head>
 <h:body>
+    <ui:composition template = "templates/page.xhtml">
+        <ui:param name="pageTitle" value="People"/>
+        <ui:define name="content">
     <h:form>
         <p:growl id="growl" showDetail="true" sticky="true" />
         <p:panel header="Edit Person Repository">
@@ -19,12 +23,13 @@
 
             </h:panelGrid>
 
-            <p:commandButton value="Save" ajax="false" icon="pi pi-check" validateClient="true" action="#{person.add}"/>
-            <p:commandButton value="Edit" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{person.update}"/>
-            <p:commandButton value="Delete" ajax="false" icon="pi pi-times" validateClient="true" action="#{person.delete}"/>
-            <p:linkButton outcome="home" value="Home" icon="pi pi-home" style="margin-right:20px;"/>
-
+            <p:commandButton value="#{main['add']}" ajax="false" icon="pi pi-check" validateClient="true" action="#{person.add}"/>
+            <p:commandButton value="#{main['edit']}" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{person.update}"/>
+            <p:commandButton value="#{main['delete']}" ajax="false" icon="pi pi-times" validateClient="true" action="#{person.delete}"/>
         </p:panel>
-    </h:form></h:body>
+        </h:form>
+        </ui:define>
+        </ui:composition>
+</h:body>
 </html>
 

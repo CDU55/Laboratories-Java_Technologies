@@ -1,0 +1,49 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<body>
+<ui:composition>
+   <h:form>
+   <p:menubar>
+      <p:menuitem value="Home" url="/Laborator4_war/home.xhtml" />
+      <p:menuitem value="People" url="/Laborator4_war/persons.xhtml" />
+      <p:menuitem value="Meetings" url="/Laborator4_war/meetings.xhtml" />
+      <p:menuitem value="Locations" url="/Laborator4_war/locations.xhtml" />
+      <p:menuitem value="Locations Distance" url="/Laborator4_war/locationsDistance.xhtml" />
+      <p:menuitem value="Meeting Attendance" url="/Laborator4_war/personsMeetings.xhtml" />
+      <p:submenu label="Solve Problem">
+         <p:menuitem value="Current State" url="/Laborator4_war/solverInput.xhtml" />
+         <p:menuitem value="File" url="/Laborator4_war/solverInputFile.xhtml" />
+      </p:submenu>
+      <p:submenu label="Edit">
+         <p:menuitem value="People" url="/Laborator4_war/editObjectPages/editPerson.xhtml" />
+         <p:menuitem value="Meetings" url="/Laborator4_war/editObjectPages/editMeetings.xhtml" />
+         <p:menuitem value="Locations" url="/Laborator4_war/editObjectPages/editLocations.xhtml" />
+         <p:menuitem value="Meetings Attendance" url="/Laborator4_war/editObjectPages/editPersonsMeeting.xhtml" />
+         <p:menuitem value="Locations Distance" url="/Laborator4_war/editObjectPages/editLocationsDistance.xhtml" />
+      </p:submenu>
+      <p:submenu label="Display">
+         <p:menuitem value="Display People" url="/Laborator4_war/viewDataPages/displayPersons.xhtml" />
+         <p:menuitem value="Display Meetings" url="/Laborator4_war/viewDataPages/displayMeetings.xhtml" />
+         <p:menuitem value="Display Locations" url="/Laborator4_war/viewDataPages/displayLocations.xhtml" />
+         <p:menuitem value="Display Meetings Attendance" url="/Laborator4_war/viewDataPages/displayMeetingsAttendance.xhtml" />
+         <p:menuitem value="Display Locations Distance" url="/Laborator4_war/viewDataPages/displayLocationsDistance.xhtml" />
+      </p:submenu>
+      <p:menuitem value="Add Locatiton" url="/Laborator4_war/addLocation.xhtml" />
+      <p:submenu label="Language">
+         <p:menuitem value="English" action="#{languageSetter.changeLanguage('en_US')}"/>
+         <p:menuitem value="Romana" action="#{languageSetter.changeLanguage('ro_RO')}"/>
+      </p:submenu>
+      <p:menuitem value="All Data" url="/Laborator4_war/allDataImplementer.xhtml" />
+   </p:menubar>
+   </h:form>
+</ui:composition>
+</body>
+</html>
+

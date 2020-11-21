@@ -12,6 +12,8 @@ import org.chocosolver.solver.*;
 import org.chocosolver.solver.variables.*;
 import org.chocosolver.solver.constraints.*;
 
+import javax.naming.NamingException;
+
 public class ProblemSolver {
 
     Solver solver;
@@ -21,10 +23,11 @@ public class ProblemSolver {
     int[][] attendance;
     int[][] distance;
 
+    public static long lastRunTime=0;
     IntVar[] meeting;
 
 
-    ProblemSolver(int times) throws  SQLException, ClassNotFoundException, ParseException {
+    ProblemSolver(int times) throws SQLException, ClassNotFoundException, ParseException, NamingException {
             meetingsNumber = DataProvider.getMeetingsNumber();
             agentsNumber = DataProvider.getPersonsNumber();
             timeslots = times;
@@ -91,7 +94,14 @@ public class ProblemSolver {
     }
 
     public boolean solve() {
-        return solver.findSolution();
+        long startTime = System.nanoTime();
+
+        boolean result= solver.findSolution();
+        long endTime   = System.nanoTime();
+        long totalTime = endTime - startTime;
+        lastRunTime=totalTime;
+        return result;
+
     }
 
     public List<SolveResult> result() {

@@ -1,0 +1,104 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+</h:head>
+<h:body>
+    <composite:interface>
+        <composite:attribute name="dataSets" required="true" type="DataLayer.DataEntries"/>
+    </composite:interface>
+    <composite:implementation>
+        <p:dataTable var="personElement" value="#{cc.attrs.dataSets.persons}">
+            <f:view locale="#{languageSetter.locale}">
+                <f:facet name="header">
+                    #{main['personList']}
+                </f:facet>
+                <p:column>
+                    <f:facet name="header">
+                        Id
+                    </f:facet>
+                    #{personElement.id}
+                </p:column>
+                <p:column headerText="#{main['personid']}">
+                    #{personElement.personId}
+                </p:column>
+                <p:column headerText="#{main['personName']}">
+                    #{personElement.name}
+                </p:column>
+            </f:view>
+        </p:dataTable>
+        <p:dataTable var="meetingElement" value="#{cc.attrs.dataSets.meetings}">
+            <f:view locale="#{languageSetter.locale}">
+                <f:facet name="header">
+                    #{main['meetingList']}
+                </f:facet>
+                <p:column>
+                    <f:facet name="header">
+                        Id
+                    </f:facet>
+                    #{meetingElement.id}
+                </p:column>
+                <p:column headerText="#{main['meetingid']}">
+                    #{meetingElement.meetingId}
+                </p:column>
+                <p:column headerText="#{main['topic']}">
+                    #{meetingElement.topic}
+                </p:column>
+                <p:column headerText="#{main['startTime']}">
+                    #{meetingElement.startTime}
+                </p:column>
+                <p:column headerText="#{main['duration']}">
+                    #{meetingElement.duration}
+                </p:column>
+                <p:column headerText="#{main['locationId']}">
+                    #{meetingElement.locationId}
+                </p:column>
+            </f:view>
+        </p:dataTable>
+        <p:dataTable var="locationElement" value="#{cc.attrs.dataSets.locations}">
+            <f:view locale="#{languageSetter.locale}">
+                <f:facet name="header">
+                    #{main['locationList']}
+                </f:facet>
+                <p:column headerText="#{main['locationId']}">
+                    #{locationElement.id}
+                </p:column>
+                <p:column headerText="#{main['locationName']}">
+                    #{locationElement.name}
+                </p:column>
+            </f:view>
+        </p:dataTable>
+        <p:dataTable var="locationDistanceElement" value="#{cc.attrs.dataSets.locationsDistance}">
+            <f:view locale="#{languageSetter.locale}">
+                <f:facet name="header">
+                    #{main['locationDistanceList']}
+                </f:facet>
+                <p:column headerText="#{main['location1']}">
+                    #{locationDistanceElement.location2}
+                </p:column>
+                <p:column headerText="#{main['location2']}">
+                    #{locationDistanceElement.location2}
+                </p:column>
+                <p:column headerText="#{main['distance']}">
+                    #{locationDistanceElement.distance}
+                </p:column>
+            </f:view>
+        </p:dataTable>
+        <p:dataTable var="personMeetingElement" value="#{cc.attrs.dataSets.personMeetings}">
+            <f:view locale="#{languageSetter.locale}">
+                <f:facet name="header">
+                    #{main['personMeetingList']}
+                </f:facet>
+                <p:column headerText="#{main['personid']}">
+                    #{personMeetingElement.personId}
+                </p:column>
+                <p:column headerText="#{main['meetingid']}">
+                    #{personMeetingElement.meetingId}
+                </p:column>
+            </f:view>
+        </p:dataTable>
+    </composite:implementation>
+</h:body>
+</html>

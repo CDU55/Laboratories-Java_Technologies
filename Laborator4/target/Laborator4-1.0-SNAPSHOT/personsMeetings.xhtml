@@ -3,10 +3,15 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui = "http://java.sun.com/jsf/facelets">
 <h:head>
 </h:head>
 <h:body>
+    <ui:composition template = "templates/page.xhtml">
+    <ui:param name="pageTitle" value="Meeting Attendance"/>
+    <ui:define name="content">
     <h:form>
         <p:growl id="growl" showDetail="true" sticky="true" />
         <p:panel header="Edit Person Meetings Repository">
@@ -21,14 +26,15 @@
 
             </h:panelGrid>
 
-            <p:commandButton value="Save" ajax="false" icon="pi pi-check" validateClient="true" action="#{personMeeting.add}"/>
-            <p:commandButton value="Delete" ajax="false" icon="pi pi-times" validateClient="true" action="#{personMeeting.delete}"/>
-            <p:linkButton outcome="home" value="Home" icon="pi pi-home" style="margin-right:20px;"/>
+            <p:commandButton value="#{main['add']}" ajax="false" icon="pi pi-check" validateClient="true" action="#{personMeeting.add}"/>
+            <p:commandButton value="#{main['edit']}" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{personMeeting.update}"/>
+            <p:commandButton value="#{main['delete']}" ajax="false" icon="pi pi-times" validateClient="true" action="#{personMeeting.delete}"/>
         </p:panel>
     </h:form>
     <p:dataTable var="personElement" value="#{data.persons}">
+        <f:view locale="#{languageSetter.locale}">
         <f:facet name="header">
-            List of Persons
+            #{main['personList']}
         </f:facet>
         <p:column>
             <f:facet name="header">
@@ -36,38 +42,43 @@
             </f:facet>
             #{personElement.id}
         </p:column>
-        <p:column headerText="Person Id">
+        <p:column headerText="#{main['personid']}">
             #{personElement.personId}
         </p:column>
-        <p:column headerText="Person Name">
+        <p:column headerText="#{main['personName']}">
             #{personElement.name}
         </p:column>
+        </f:view>
     </p:dataTable>
     <p:dataTable var="meetingElement" value="#{data.meetings}">
-        <f:facet name="header">
-            List of Meetings
-        </f:facet>
-        <p:column>
+        <f:view locale="#{languageSetter.locale}">
             <f:facet name="header">
-                Id
+                #{main['meetingList']}
             </f:facet>
-            #{meetingElement.id}
-        </p:column>
-        <p:column headerText="Meeting Id">
-            #{meetingElement.meetingId}
-        </p:column>
-        <p:column headerText="Topic">
-            #{meetingElement.topic}
-        </p:column>
-        <p:column headerText="Start Time">
-            #{meetingElement.startTime}
-        </p:column>
-        <p:column headerText="Duration(Mins)">
-            #{meetingElement.duration}
-        </p:column>
-        <p:column headerText="Location ">
-            #{meetingElement.locationId}
-        </p:column>
+            <p:column>
+                <f:facet name="header">
+                    Id
+                </f:facet>
+                #{meetingElement.id}
+            </p:column>
+            <p:column headerText="#{main['meetingid']}">
+                #{meetingElement.meetingId}
+            </p:column>
+            <p:column headerText="#{main['topic']}">
+                #{meetingElement.topic}
+            </p:column>
+            <p:column headerText="#{main['startTime']}">
+                #{meetingElement.startTime}
+            </p:column>
+            <p:column headerText="#{main['duration']}">
+                #{meetingElement.duration}
+            </p:column>
+            <p:column headerText="#{main['locationId']}">
+                #{meetingElement.locationId}
+            </p:column>
+        </f:view>
     </p:dataTable>
+    </ui:define>
+    </ui:composition>
 </h:body>
 </html>

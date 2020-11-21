@@ -3,10 +3,15 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui = "http://java.sun.com/jsf/facelets">
 <h:head>
 </h:head>
 <h:body>
+    <ui:composition template = "templates/page.xhtml">
+    <ui:param name="pageTitle" value="Problem Result"/>
+    <ui:define name="content">
     <p:dataTable var="resultElement" value="#{fetcher.results}">
         <f:facet name="header">
             Meeting Allocation
@@ -21,6 +26,7 @@
             #{resultElement.timeslot}
         </p:column>
     </p:dataTable>
-    <p:linkButton outcome="home" value="Home" icon="pi pi-home" style="margin-right:20px;"/>
+    </ui:define>
+    </ui:composition>
 </h:body>
 </html>

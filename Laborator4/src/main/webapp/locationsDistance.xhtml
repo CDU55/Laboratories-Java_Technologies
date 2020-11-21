@@ -3,10 +3,15 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui = "http://java.sun.com/jsf/facelets">
 <h:head>
 </h:head>
 <h:body>
+    <ui:composition template = "templates/page.xhtml">
+    <ui:param name="pageTitle" value="Locations Distance"/>
+    <ui:define name="content">
     <h:form>
         <p:growl id="growl" showDetail="true" sticky="true" />
         <p:panel header="Edit Locations Distance">
@@ -23,25 +28,29 @@
                 <p:spinner id="dist" value="#{locationsDistance.distance}" />
             </h:panelGrid>
 
-            <p:commandButton value="Save" ajax="false" icon="pi pi-check" validateClient="true" action="#{locationsDistance.add}"/>
-            <p:commandButton value="Edit" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{locationsDistance.update}"/>
-            <p:commandButton value="Delete" ajax="false" icon="pi pi-times" validateClient="true" action="#{locationsDistance.delete}"/>
-            <p:linkButton outcome="home" value="Home" icon="pi pi-home" style="margin-right:20px;"/>
+            <p:commandButton value="#{main['add']}" ajax="false" icon="pi pi-check" validateClient="true" action="#{locationsDistance.add}"/>
+            <p:commandButton value="#{main['edit']}" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{locationsDistance.update}"/>
+            <p:commandButton value="#{main['delete']}" ajax="false" icon="pi pi-times" validateClient="true" action="#{locationsDistance.delete}"/>
         </p:panel>
     </h:form>
     <p:dataTable var="locationElement" value="#{data.locations}">
+        <f:view locale="#{languageSetter.locale}">
         <f:facet name="header">
-            List of Locations
+            #{main['locationList']}
         </f:facet>
         <p:column>
-            <f:facet name="header">
+
+            <f:facet name="#{main['locationId']}">
                 Id
             </f:facet>
             #{locationElement.id}
         </p:column>
-        <p:column headerText="Location Name">
+        <p:column headerText="#{main['locationName']}">
             #{locationElement.name}
         </p:column>
+        </f:view>
     </p:dataTable>
+    </ui:define>
+    </ui:composition>
 </h:body>
 </html>

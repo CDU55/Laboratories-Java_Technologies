@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head></h:head>
+<h:body>
+    <ui:composition template ="../templates/page.xhtml">
+    <ui:param name="pageTitle" value="Edit"/>
+    <ui:define name="content">
+        <f:view locale="#{languageSetter.locale}">
+        <h:form>
+        <p:growl id="growl" showDetail="true" sticky="true"/>
+        <p:panel header="#{main['edit']}">
+            <h:panelGrid columns="4" cellpadding="5">
+                <ui:insert name="objectData">
+                    Form fields to be defined in the page that uses this template
+                </ui:insert>
+            </h:panelGrid>
+            <p:commandButton value="#{main['add']}" ajax="false" icon="pi pi-check" validateClient="true" action="#{toEdit.add}"/>
+            <p:commandButton value="#{main['edit']}" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{toEdit.update}"/>
+            <p:commandButton value="#{main['delete']}" ajax="false" icon="pi pi-times" validateClient="true" action="#{toEdit.delete}"/>
+        </p:panel>
+    </h:form>
+        </f:view>
+    </ui:define>
+    </ui:composition>
+</h:body>
+</html>

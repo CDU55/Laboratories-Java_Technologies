@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.naming.NamingException;
 import javax.xml.crypto.Data;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -28,7 +29,7 @@ public class DataEntries {
         this.persons = persons;
     }
 
-    public List<Meeting> getMeetings() throws ParseException, SQLException, ClassNotFoundException {
+    public List<Meeting> getMeetings() throws ParseException, SQLException, ClassNotFoundException, NamingException {
         this.meetings=DataProvider.getMeetings();
         return meetings;
     }
@@ -37,7 +38,7 @@ public class DataEntries {
         this.meetings = meetings;
     }
 
-    public List<Location> getLocations() throws SQLException, ClassNotFoundException {
+    public List<Location> getLocations() throws SQLException, ClassNotFoundException, NamingException {
         this.locations=DataProvider.getLocations();
         return locations;
     }

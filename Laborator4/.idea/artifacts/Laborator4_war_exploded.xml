@@ -16,15 +16,13 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.sun.faces:jsf-api:2.1.7" />
           <element id="library" level="project" name="Maven: com.sun.faces:jsf-impl:2.1.7" />
+          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.primefaces:primefaces:7.0" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:2.0.1.Final" />
           <element id="library" level="project" name="Maven: org.hibernate.validator:hibernate-validator:6.1.6.Final" />
           <element id="library" level="project" name="Maven: jakarta.validation:jakarta.validation-api:2.0.2" />
           <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.3.2.Final" />
           <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.3.4" />
-          <element id="library" level="project" name="Maven: com.microsoft.sqlserver:mssql-jdbc:6.2.2.jre8" />
-          <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.2.18" />
-          <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:3.5.0" />
           <element id="library" level="project" name="Maven: org.xerial:sqlite-jdbc:3.32.3.2" />
           <element id="library" level="project" name="Maven: org.choco-solver:choco-solver:3.3.0" />
           <element id="library" level="project" name="Maven: dk.brics.automaton:automaton:1.11-8" />
@@ -32,6 +30,16 @@
           <element id="library" level="project" name="Maven: args4j:args4j:2.0.29" />
           <element id="library" level="project" name="Maven: net.sf.trove4j:trove4j:3.0.3" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.7" />
+          <element id="library" level="project" name="Maven: net.bootsfaces:bootsfaces:1.5.0" />
+          <element id="library" level="project" name="Maven: com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20191001.1" />
+          <element id="library" level="project" name="Maven: com.google.guava:guava:27.1-jre" />
+          <element id="library" level="project" name="Maven: com.google.guava:failureaccess:1.0.1" />
+          <element id="library" level="project" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" />
+          <element id="library" level="project" name="Maven: com.google.code.findbugs:jsr305:3.0.2" />
+          <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:2.5.2" />
+          <element id="library" level="project" name="Maven: com.google.errorprone:error_prone_annotations:2.2.0" />
+          <element id="library" level="project" name="Maven: com.google.j2objc:j2objc-annotations:1.1" />
+          <element id="library" level="project" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.17" />
         </element>
       </element>
       <element id="directory" name="META-INF">

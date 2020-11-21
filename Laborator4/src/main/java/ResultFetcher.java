@@ -3,6 +3,7 @@ import org.primefaces.model.UploadedFile;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.naming.NamingException;
 import javax.validation.constraints.Min;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -19,7 +20,7 @@ public class ResultFetcher {
 
     private Object file;
 
-    public List<SolveResult> getResults() throws ClassNotFoundException, SQLException, ParseException, IOException {
+    public List<SolveResult> getResults() throws ClassNotFoundException, SQLException, ParseException, IOException, NamingException {
         ProblemSolver solver;
         if(file!=null)
         {

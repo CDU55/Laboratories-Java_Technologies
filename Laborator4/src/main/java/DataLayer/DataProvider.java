@@ -2,6 +2,7 @@ package DataLayer;
 
 import javafx.scene.input.DataFormat;
 
+import javax.naming.NamingException;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -82,8 +83,8 @@ public static List<Person> getPersons() throws SQLException, ClassNotFoundExcept
 
 
 
-    public static List<Location> getLocations() throws SQLException, ClassNotFoundException {
-        Connection conn=DbConnection.getConnection();
+    public static List<Location> getLocations() throws SQLException, ClassNotFoundException, NamingException {
+        Connection conn=DbConnectionJNDI.getConnection();
         Statement st=conn.createStatement();
         ResultSet rs=st.executeQuery(getLocationsQuery);
         List<Location> locations=new ArrayList<Location>();
