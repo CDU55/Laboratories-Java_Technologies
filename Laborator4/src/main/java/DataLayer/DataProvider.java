@@ -84,7 +84,7 @@ public static List<Person> getPersons() throws SQLException, ClassNotFoundExcept
 
 
     public static List<Location> getLocations() throws SQLException, ClassNotFoundException, NamingException {
-        Connection conn=DbConnectionJNDI.getConnection();
+        Connection conn=DbConnection.getConnection();
         Statement st=conn.createStatement();
         ResultSet rs=st.executeQuery(getLocationsQuery);
         List<Location> locations=new ArrayList<Location>();

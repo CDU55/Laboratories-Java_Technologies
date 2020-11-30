@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui = "http://java.sun.com/jsf/facelets">
+<h:body>
+    <ui:composition template ="dataEdit.xhtml">
+        <ui:param name="toEdit" value="#{locationsDistance}"/>
+        <ui:define name="objectData">
+
+            <p:outputLabel for="@next" value="Location 1 :" />
+            <p:spinner id="l1" value="#{locationsDistance.location1}" />
+
+            <p:outputLabel for="@next" value="Location 2 :" />
+            <p:spinner id="l2" value="#{locationsDistance.location2}" />
+
+            <p:outputLabel for="@next" value="Distance:" />
+            <p:spinner id="dist" value="#{locationsDistance.distance}" />
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

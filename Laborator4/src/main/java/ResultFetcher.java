@@ -1,5 +1,5 @@
 import DataLayer.SolveResult;
-import org.primefaces.model.UploadedFile;
+import org.primefaces.model.file.UploadedFile;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -25,7 +25,7 @@ public class ResultFetcher {
         if(file!=null)
         {
             UploadedFile fileConverted=(UploadedFile)file;
-            solver=new ProblemSolver(fileConverted.getInputstream());
+            solver=new ProblemSolver(fileConverted.getInputStream());
         }
         else if(this.timeslots!=0)
         {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="Meetings" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>jdbc/MeetingsDB</jta-data-source>
+        <mapping-file>META-INF/mapping.xml</mapping-file>
+        <class>DataLayerJPA.LocationsDistanceJPA</class>
+        <class>DataLayerJPA.MeetingsJPA</class>
+        <class>DataLayerJPA.LocationsJPA</class>
+        <class>DataLayerJPA.PersonsJPA</class>
+        <class>DataLayerJPA.PersonsMeetingsJPA</class>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLiteDialect" />
+        </properties>
+    </persistence-unit>
+</persistence>

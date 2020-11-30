@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ez="http://java.sun.com/jsf/composite/comps"
+      xmlns:ui = "http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>Using a sample composite component</title>
+</h:head>
+<h:body>
+    <ui:composition template ="/templates/page.xhtml">
+        <ui:param name="pageTitle" value="#{main['allData']}"/>
+        <ui:define name="content">
+            <h:form>
+                <ez:allData dataSets="#{data}">
+                </ez:allData>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

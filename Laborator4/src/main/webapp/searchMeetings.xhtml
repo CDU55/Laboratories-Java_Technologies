@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui = "http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+    <ui:composition template = "templates/page.xhtml">
+        <ui:param name="pageTitle" value="Meetings"/>
+
+        <ui:define name="content">
+            <h:form>
+                <p:growl id="growl" showDetail="true" sticky="true" />
+                <p:panel header="Search Meetings">
+                    <h:panelGrid columns="3" cellpadding="20">
+                        <p:selectBooleanCheckbox value="#{meetingFilter.byTopic}" itemLabel="Filter By Topic"/>
+                        <p:outputLabel for="@next" value="Topic :" />
+                        <p:inputText value="#{meetingFilter.topic}" label="Topic">
+                        </p:inputText>
+                        <p:selectBooleanCheckbox value="#{meetingFilter.byDurationsLessThan}" itemLabel="Filter By Duration Less"/>
+
+                        <p:outputLabel for="@next" value="Duration Less Than :" />
+                        <p:spinner value="#{meetingFilter.durationLessThan}" />
+
+                        <p:selectBooleanCheckbox value="#{meetingFilter.byDurationsGreaterThan}" itemLabel="Filter By Duration More"/>
+                        <p:outputLabel for="@next" value="Duration More Than :" />
+                        <p:spinner  value="#{meetingFilter.durationGreaterThan}" />
+                        <p:selectBooleanCheckbox value="#{meetingFilter.byLocation}" itemLabel="Filter By Location"/>
+                        <p:outputLabel for="@next" value="Location :" />
+                        <p:inputText  value="#{meetingFilter.location}" />
+
+                        <p:selectBooleanCheckbox value="#{meetingFilter.byDate}" itemLabel="Filter By Date"/>
+                        <p:outputLabel for="@next" value="Date :" />
+                        <p:datePicker  value="#{meetingFilter.date}" />
+                    </h:panelGrid>
+
+
+                    <p:commandButton value="#{main['search']}" ajax="false" icon="pi pi-check" action="#{meetingFetcher.filterMeetings(meetingFilter)}"/>
+                </p:panel>
+            </h:form>
+            <p:dataTable var="locationElement" value="#{locRepo.locations}">
+                <f:view locale="#{languageSetter.locale}">
+                    <f:facet name="header">
+                        #{main['locationList']}
+                    </f:facet>
+                    <p:column headerText="#{main['locationId']}">
+                        #{locationElement.id}
+                    </p:column>
+                    <p:column headerText="#{main['locationName']}">
+                        #{locationElement.name}
+                    </p:column>
+                </f:view>
+            </p:dataTable>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

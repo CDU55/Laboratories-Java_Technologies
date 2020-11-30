@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="DataLayerJPA.LocationsJPA">
+        <table name="Locations"/>
+        <attributes>
+            <id name="id">
+                <column name="Id" nullable="false" precision="-1"/>
+            </id>
+            <basic name="name">
+                <column name="Name"/>
+            </basic>
+            <one-to-many name="locationsDistancesById" mapped-by="locationsByLocation1"
+                         target-entity="DataLayerJPA.LocationsDistanceJPA"/>
+            <one-to-many name="locationsDistancesById_0" mapped-by="locationsByLocation2"
+                         target-entity="DataLayerJPA.LocationsDistanceJPA"/>
+            <one-to-many name="meetingsById" mapped-by="locationsByLocationId"
+                         target-entity="DataLayerJPA.MeetingsJPA"/>
+        </attributes>
+    </entity>
+    <entity class="DataLayerJPA.LocationsDistanceJPA">
+        <table name="LocationsDistance"/>
+        <attributes>
+            <id name="id">
+                <column name="Id" nullable="false" precision="-1"/>
+            </id>
+            <basic name="location1">
+                <column name="Location1" nullable="false" insertable="false" updatable="false" precision="-1"/>
+            </basic>
+            <basic name="location2">
+                <column name="Location2" nullable="false" insertable="false" updatable="false" precision="-1"/>
+            </basic>
+            <basic name="distance">
+                <column name="Distance" nullable="false" precision="-1"/>
+            </basic>
+            <many-to-one name="locationsByLocation1" optional="true" target-entity="DataLayerJPA.LocationsJPA">
+                <join-column name="Location1" nullable="false" referenced-column-name="Id"/>
+            </many-to-one>
+            <many-to-one name="locationsByLocation2" optional="true" target-entity="DataLayerJPA.LocationsJPA">
+                <join-column name="Location2" nullable="false" referenced-column-name="Id"/>
+            </many-to-one>
+        </attributes>
+    </entity>
+    <entity class="DataLayerJPA.MeetingsJPA">
+        <table name="Meetings"/>
+        <attributes>
+            <id name="id">
+                <column name="Id" nullable="false" precision="-1"/>
+            </id>
+            <basic name="meetingId">
+                <column name="MeetingId"/>
+            </basic>
+            <basic name="topic">
+                <column name="Topic"/>
+            </basic>
+            <basic name="startTime">
+                <column name="StartTime"/>
+            </basic>
+            <basic name="duration">
+                <column name="Duration" precision="-1"/>
+            </basic>
+            <basic name="locationId">
+                <column name="LocationId" nullable="false" insertable="false" updatable="false" precision="-1"/>
+            </basic>
+            <many-to-one name="locationsByLocationId" optional="true" target-entity="DataLayerJPA.LocationsJPA">
+                <join-column name="LocationId" nullable="false" referenced-column-name="Id"/>
+            </many-to-one>
+            <one-to-many name="personsMeetingsById" mapped-by="meetingsByMeetingId"
+                         target-entity="DataLayerJPA.PersonsMeetingsJPA"/>
+        </attributes>
+    </entity>
+    <entity class="DataLayerJPA.PersonsJPA">
+        <table name="Persons"/>
+        <attributes>
+            <id name="id">
+                <column name="Id" nullable="false" precision="-1"/>
+            </id>
+            <basic name="personId">
+                <column name="PersonId"/>
+            </basic>
+            <basic name="name">
+                <column name="Name" nullable="false"/>
+            </basic>
+            <one-to-many name="personsMeetingsById" mapped-by="personsByPersonId"
+                         target-entity="DataLayerJPA.PersonsMeetingsJPA"/>
+        </attributes>
+    </entity>
+    <entity class="DataLayerJPA.PersonsMeetingsJPA">
+        <table name="PersonsMeetings"/>
+        <attributes>
+            <id name="id">
+                <column name="Id" nullable="false" precision="-1"/>
+            </id>
+            <basic name="personId">
+                <column name="PersonId" nullable="false" insertable="false" updatable="false" precision="-1"/>
+            </basic>
+            <basic name="meetingId">
+                <column name="MeetingId" nullable="false" insertable="false" updatable="false" precision="-1"/>
+            </basic>
+            <many-to-one name="personsByPersonId" optional="true" target-entity="DataLayerJPA.PersonsJPA">
+                <join-column name="PersonId" nullable="false" referenced-column-name="Id"/>
+            </many-to-one>
+            <many-to-one name="meetingsByMeetingId" optional="true" target-entity="DataLayerJPA.MeetingsJPA">
+                <join-column name="MeetingId" nullable="false" referenced-column-name="Id"/>
+            </many-to-one>
+        </attributes>
+    </entity>
+</entity-mappings>

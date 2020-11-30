@@ -16,7 +16,12 @@
     <h:form>
         <p:growl id="growl" showDetail="true" sticky="true" />
         <p:panel header="Edit Meetings Repository">
-            <h:panelGrid columns="4" cellpadding="5">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:outputLabel for="@next" value="Type :" />
+                <p:selectOneMenu id="console" value="#{meeting.type}" onchange="" style="width:125px">
+                    <f:selectItem itemLabel="Academic Meeting" itemValue="A" />
+                    <f:selectItem itemLabel="Paid Meeting" itemValue="P" />
+                </p:selectOneMenu>
                 <p:outputLabel for="@next" value="Id :" />
                 <p:inputText value="#{meeting.meetingId}" label="Id">
                     <f:validator validatorId="validators.MeetingValidator"/>
@@ -33,25 +38,31 @@
 
                 <p:outputLabel for="@next" value="Location :" />
                 <p:spinner value="#{meeting.locationId}" label="Location"/>
+
+                <p:outputLabel for="@next" value="Fee :" />
+                <p:spinner id="fee" value="#{meeting.fee}" />
+
+                <p:outputLabel for="@next" value="Required Rank :" />
+                <p:inputText value="#{meeting.required_rank}" label="Topic"/>
             </h:panelGrid>
 
 
-            <p:commandButton value="#{main['add']}" ajax="false" icon="pi pi-check" validateClient="true" action="#{meeting.add}"/>
+            <p:commandButton value="#{main['add']}" ajax="false" icon="pi pi-check" validateClient="true" action="#{meetingRepo.addMeeting(meeting)}"/>
             <p:commandButton value="#{main['edit']}" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{meeting.update}"/>
             <p:commandButton value="#{main['delete']}" ajax="false" icon="pi pi-times" validateClient="true" action="#{meeting.delete}"/>
 
         </p:panel>
     </h:form>
-        <p:dataTable var="locationElement" value="#{data.locations}">
+        <p:dataTable var="locationElement" value="#{locRepo.locations}">
             <f:view locale="#{languageSetter.locale}">
                 <f:facet name="header">
                     #{main['locationList']}
                 </f:facet>
                 <p:column headerText="#{main['locationId']}">
-                    #{element.id}
+                    #{locationElement.id}
                 </p:column>
                 <p:column headerText="#{main['locationName']}">
-                    #{element.name}
+                    #{locationElement.name}
                 </p:column>
             </f:view>
         </p:dataTable>

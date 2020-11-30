@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui = "http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+    <ui:composition template = "templates/page.xhtml">
+    <ui:param name="pageTitle" value="#{main['solverFile']}"/>
+    <ui:define name="content">
+    <h:form>
+        <p:growl id="growl" showDetail="true" sticky="true" />
+        <p:panel header="Provide the number of Timeslots and the input file">
+            <h:panelGrid columns="4" cellpadding="5">
+
+                <p:outputLabel for="@next" value="Number of Timeslots :" />
+                <p:spinner id="l1" value="#{fetcher.timeslots}" />
+
+                <p:outputLabel for="@next" value="File :" />
+                <p:fileUpload value="#{fetcher.file}" mode="simple" skinSimple="true"/>
+            </h:panelGrid>
+            <p:commandButton value="Solve" ajax="false" icon="pi pi-check" validateClient="true" action="#{fetcher.toDisplayResult}"/>
+        </p:panel>
+    </h:form>
+    </ui:define>
+    </ui:composition>
+</h:body>
+</html>

@@ -8,7 +8,7 @@
       xmlns:ui = "http://java.sun.com/jsf/facelets">
 <h:body>
     <ui:composition template ="dataView.xhtml">
-        <ui:param name="elements" value="#{data.locations}"/>
+        <ui:param name="elements" value="#{locRepo.getLocations()}"/>
         <ui:define name="columns">
             <f:view locale="#{languageSetter.locale}">
             <f:facet name="header">

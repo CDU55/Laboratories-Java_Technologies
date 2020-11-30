@@ -31,6 +31,13 @@ public class Meeting {
     @Min(value = 1,message = "Location Ids are pozitive numbers")
     private int locationId;
 
+    public int fee;
+
+    public String required_rank;
+
+    public String type;
+
+
     public int getId() {
         return Id;
     }
@@ -64,6 +71,22 @@ public class Meeting {
         this.startTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(formatted);
     }
 
+    public int getFee() {
+        return fee;
+    }
+
+    public void setFee(int fee) {
+        this.fee = fee;
+    }
+
+    public String getRequired_rank() {
+        return required_rank;
+    }
+
+    public void setRequired_rank(String required_rank) {
+        this.required_rank = required_rank;
+    }
+
     public int getDuration() {
         return duration;
     }
@@ -78,6 +101,14 @@ public class Meeting {
 
     public void setLocationId(int locationId) {
         this.locationId = locationId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public void add() {

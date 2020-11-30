@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui = "http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+    <ui:composition template = "templates/page.xhtml">
+        <ui:param name="pageTitle" value="People"/>
+        <ui:define name="content">
+    <h:form>
+        <p:growl id="growl" showDetail="true" sticky="true" />
+        <p:panel header="Edit Person Repository">
+            <h:panelGrid columns="4" cellpadding="5">
+                <p:outputLabel for="@next" value="Id" />
+                <p:inputText value="#{person.personId}" label="Id"/>
+
+                <p:outputLabel for="@next" value="Name" />
+                <p:inputText value="#{person.name}" label="Name"/>
+
+            </h:panelGrid>
+
+            <p:commandButton value="#{main['add']}" ajax="false" icon="pi pi-check" validateClient="true" action="#{person.add}"/>
+            <p:commandButton value="#{main['edit']}" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{person.update}"/>
+            <p:commandButton value="#{main['delete']}" ajax="false" icon="pi pi-times" validateClient="true" action="#{person.delete}"/>
+        </p:panel>
+        </h:form>
+        </ui:define>
+        </ui:composition>
+</h:body>
+</html>
+
