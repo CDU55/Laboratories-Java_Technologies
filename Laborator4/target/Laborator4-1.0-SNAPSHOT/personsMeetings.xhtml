@@ -26,12 +26,11 @@
 
             </h:panelGrid>
 
-            <p:commandButton value="#{main['add']}" ajax="false" icon="pi pi-check" validateClient="true" action="#{personMeeting.add}"/>
-            <p:commandButton value="#{main['edit']}" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{personMeeting.update}"/>
-            <p:commandButton value="#{main['delete']}" ajax="false" icon="pi pi-times" validateClient="true" action="#{personMeeting.delete}"/>
+            <p:commandButton value="#{main['add']}" ajax="false" icon="pi pi-check" validateClient="true" action="#{persMeetRepo.addPersonMeetings(personMeeting)}"/>
+            <p:commandButton value="#{main['delete']}" ajax="false" icon="pi pi-times" validateClient="true" action="#{persMeetRepo.deletePersonMeetings(personMeeting)}"/>
         </p:panel>
     </h:form>
-    <p:dataTable var="personElement" value="#{data.persons}">
+    <p:dataTable var="personElement" value="#{peopleRepo.people}">
         <f:view locale="#{languageSetter.locale}">
         <f:facet name="header">
             #{main['personList']}
@@ -50,7 +49,7 @@
         </p:column>
         </f:view>
     </p:dataTable>
-    <p:dataTable var="meetingElement" value="#{data.meetings}">
+    <p:dataTable var="meetingElement" value="#{meetingRepo.meetings}">
         <f:view locale="#{languageSetter.locale}">
             <f:facet name="header">
                 #{main['meetingList']}

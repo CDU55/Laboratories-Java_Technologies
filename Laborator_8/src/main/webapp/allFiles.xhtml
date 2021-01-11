@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+</h:head>
+<h:body>
+    <p:menubar>
+        <p:menuitem value="Set Period" url="/Laborator_8-1.0-SNAPSHOT/faces/setPeriod.xhtml" />
+        <p:menuitem value="Upload File" url="/Laborator_8-1.0-SNAPSHOT/faces/uploadFile.xhtml" />
+    </p:menubar>
+    <p:growl id="growl" showDetail="true" sticky="true" />
+    <p:dataTable var="fileElement" value="#{controller.allFiles}">
+                    <f:facet name="header">
+                        All Submission
+                    </f:facet>
+                    <p:column headerText="Initial Name">
+                        #{fileElement.initialName}
+                    </p:column>
+                <p:column headerText="New Name">
+                    #{fileElement.newName}
+                </p:column>
+                <p:column headerText="Path">
+                    #{fileElement.path}
+                </p:column>
+                <p:column headerText="User Id">
+                    #{fileElement.userId}
+                </p:column>
+            </p:dataTable>
+</h:body>
+</html>

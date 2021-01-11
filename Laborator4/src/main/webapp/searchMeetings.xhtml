@@ -42,7 +42,7 @@
                     <p:commandButton value="#{main['search']}" ajax="false" icon="pi pi-check" action="#{meetingFetcher.filterMeetings(meetingFilter)}"/>
                 </p:panel>
             </h:form>
-            <p:dataTable var="locationElement" value="#{locRepo.locations}">
+            <p:dataTable var="locationElement" value="#{data.locations}">
                 <f:view locale="#{languageSetter.locale}">
                     <f:facet name="header">
                         #{main['locationList']}

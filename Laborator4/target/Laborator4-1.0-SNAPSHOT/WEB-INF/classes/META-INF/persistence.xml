@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
-    <persistence-unit name="Meetings" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="Meetings" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>jdbc/MeetingsDB</jta-data-source>
         <mapping-file>META-INF/mapping.xml</mapping-file>
         <class>DataLayerJPA.LocationsDistanceJPA</class>
         <class>DataLayerJPA.MeetingsJPA</class>
@@ -11,10 +12,6 @@
         <class>DataLayerJPA.PersonsMeetingsJPA</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLiteDialect" />
-            <property name="hibernate.connection.driver_class"
-                      value="org.sqlite.JDBC"/>
-            <property name="hibernate.connection.url"
-                      value="jdbc:sqlite:C:\Users\Claudiu\Desktop\Master\Java\Laboratories-Java_Technologies\Laborator4\src\Resources\meetings.db"/>
         </properties>
     </persistence-unit>
 </persistence>

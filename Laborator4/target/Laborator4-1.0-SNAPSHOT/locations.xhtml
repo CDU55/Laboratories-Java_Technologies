@@ -20,7 +20,6 @@
             </h:panelGrid>
 
             <p:commandButton value="#{main['add']}" ajax="false" icon="pi pi-check" validateClient="true" action="#{locRepo.addLocation(location)}"/>
-            <p:commandButton value="#{main['edit']}" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{location.update}"/>
             <p:commandButton value="#{main['delete']}" ajax="false" icon="pi pi-times" validateClient="true" action="#{locRepo.deleteLocation(location)}"/>
         </p:panel>
     </h:form>

@@ -48,12 +48,12 @@
 
 
             <p:commandButton value="#{main['add']}" ajax="false" icon="pi pi-check" validateClient="true" action="#{meetingRepo.addMeeting(meeting)}"/>
-            <p:commandButton value="#{main['edit']}" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{meeting.update}"/>
-            <p:commandButton value="#{main['delete']}" ajax="false" icon="pi pi-times" validateClient="true" action="#{meeting.delete}"/>
+            <p:commandButton value="#{main['edit']}" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{meetingRepo.editMeetings(meeting)}"/>
+            <p:commandButton value="#{main['delete']}" ajax="false" icon="pi pi-times" validateClient="true" action="#{meetingRepo.deleteMeetings(meeting)}"/>
 
         </p:panel>
     </h:form>
-        <p:dataTable var="locationElement" value="#{locRepo.locations}">
+        <p:dataTable var="locationElement" value="#{data.locations}">
             <f:view locale="#{languageSetter.locale}">
                 <f:facet name="header">
                     #{main['locationList']}

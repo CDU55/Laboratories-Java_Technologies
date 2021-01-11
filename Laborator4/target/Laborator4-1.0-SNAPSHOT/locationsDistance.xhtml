@@ -28,12 +28,12 @@
                 <p:spinner id="dist" value="#{locationsDistance.distance}" />
             </h:panelGrid>
 
-            <p:commandButton value="#{main['add']}" ajax="false" icon="pi pi-check" validateClient="true" action="#{locationsDistance.add}"/>
-            <p:commandButton value="#{main['edit']}" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{locationsDistance.update}"/>
-            <p:commandButton value="#{main['delete']}" ajax="false" icon="pi pi-times" validateClient="true" action="#{locationsDistance.delete}"/>
+            <p:commandButton value="#{main['add']}" ajax="false" icon="pi pi-check" validateClient="true" action="#{locDistRepo.addLocationsDistance(locationsDistance)}"/>
+            <p:commandButton value="#{main['edit']}" ajax="false" icon="pi pi-pencil" validateClient="true" action="#{locDistRepo.editLocationsDistance(locationsDistance)}"/>
+            <p:commandButton value="#{main['delete']}" ajax="false" icon="pi pi-times" validateClient="true" action="#{locDistRepo.deleteLocationsDistance(locationsDistance)}"/>
         </p:panel>
     </h:form>
-    <p:dataTable var="locationElement" value="#{data.locations}">
+    <p:dataTable var="locationElement" value="#{locRepo.locations}">
         <f:view locale="#{languageSetter.locale}">
         <f:facet name="header">
             #{main['locationList']}
